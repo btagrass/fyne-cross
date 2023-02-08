@@ -72,6 +72,7 @@ func Cmd(image string, vol volume.Volume, opts Options, cmdArgs []string) *execa
 
 	// add default env variables
 	args = append(args,
+		"-e", "GOPROXY=https://goproxy.cn,direct ", // change GOPROXY
 		"-e", "CGO_ENABLED=1", // enable CGO
 		"-e", fmt.Sprintf("GOCACHE=%s", vol.GoCacheDirContainer()), // mount GOCACHE to reuse cache between builds
 	)
